@@ -1,0 +1,60 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Project</th>
+        <th>Amount</th>
+        <th>Time</th>
+        <th>Dead Line</th>
+        <th>Notes</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of taskList; let id = index">
+        <td>{{ item.taskTitle }}</td>
+        <td>{{ item.taskProject }}</td>
+        <td>{{ item.taskAmount }}</td>
+        <td>{{ item.taskTime }}</td>
+        <td>{{ item.taskDeadline }}</td>
+        <td>{{ item.taskNotes }}</td>
+        <td>
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+            (click)="openModel(content,item)">
+            Open modal
+          </button> -->
+
+          <button type="button" class="btn btn-primary" [routerLink]="['/smart/'+id]"
+            [state]="{ id:1 , name:'Angular'}">
+            View Task
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        Display Task
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+        <span aria-hidden="true">
+          ×
+        </span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-single-task [singleTask]="singleTask"></app-single-task>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">
+        Close
+      </button>
+    </div>
+  </ng-template>
+</div>

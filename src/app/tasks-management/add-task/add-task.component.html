@@ -1,0 +1,81 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 border p-4 shadow bg-light">
+            <div class="col-12">
+                <h3 class="fw-normal text-secondary fs-4 text-uppercase mb-4">What are you doing</h3>
+                <form class="needs-validation" (ngSubmit)="submit(newForm)" #newForm="ngForm">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <!-- <input type="text" class="form-control" placeholder="what are you doing?"> -->
+                            <input type="text" class="form-control" id="title" placeholder="What are you doing ?"
+                                name="title" ngModel [ngClass]="{'is-invalid': newForm.submitted && titleRef.invalid}"
+                                #titleRef="ngModel" required />
+
+                            <span *ngIf="newForm.submitted && titleRef.invalid">
+                                <small class="form-text text-danger" *ngIf="titleRef.errors">This field is
+                                    required!</small>
+                            </span>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- <input type="text" class="form-control" placeholder="Client or Project?"> -->
+                            <input type="text" class="form-control" id="project" placeholder="Client or Project ?"
+                                name="project" ngModel
+                                [ngClass]="{'is-invalid': newForm.submitted && projectRef.invalid}"
+                                #projectRef="ngModel" required />
+                            <span *ngIf="newForm.submitted && projectRef.invalid">
+                                <small class="form-text text-danger" *ngIf="projectRef.errors">This field is
+                                    required!</small>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="time" class="form-control" id="time" placeholder="time" name="time" ngModel
+                                [ngClass]="{'is-invalid': newForm.submitted && timeRef.invalid}" #timeRef="ngModel"
+                                required />
+                            <span *ngIf="newForm.submitted && timeRef.invalid">
+                                <small class="form-text text-danger" *ngIf="timeRef.errors">This field is
+                                    required!</small>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="amount" placeholder="0:00" name="amount" ngModel
+                                [ngClass]="{'is-invalid': newForm.submitted && amountRef.invalid}" #amountRef="ngModel"
+                                required />
+                            <span *ngIf="newForm.submitted && amountRef.invalid">
+                                <small class="form-text text-danger" *ngIf="amountRef.errors">This field is
+                                    required!</small>
+                            </span>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" ngModel value="" name="idFixedPrice"
+                                    #idFixedPrice="ngModel" id="idFixedPrice">
+                                <label class="form-check-label" for="idFixedPrice">
+                                    Default checkbox
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="date" class="form-control" name="deadline" id="deadline"
+                                placeholder="in there a deadline?" ngModel
+                                [ngClass]="{'is-invalid': newForm.submitted && deadlineRef.invalid}"
+                                #deadlineRef="ngModel" required />
+                            <span *ngIf="newForm.submitted && deadlineRef.invalid">
+                                <small class="form-text text-danger" *ngIf="deadlineRef.errors">This field is
+                                    required!</small>
+                            </span>
+                        </div>
+                        <div class="col-12">
+                            <textarea cols="4" rows="4" class="form-control" ngModel name="notes" id="notes"
+                                #notesRef="ngModel" placeholder="your Notes:">
+
+                            </textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Start Task</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
